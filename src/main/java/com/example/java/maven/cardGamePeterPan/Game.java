@@ -1,18 +1,19 @@
 package com.example.java.maven.cardGamePeterPan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
     private final UserInputProvider userInputProvider;
     private final MessagePrinter messagePrinter;
-    private final List<Player> playerList;
+    private final ArrayList<Player> playerList;
     private final Deck deck;
 
 
 
     public Game(UserInputProvider userInputProvider,
                 MessagePrinter messagePrinter,
-                List<Player> playerList, Deck deck) {
+                ArrayList<Player> playerList, Deck deck) {
         this.userInputProvider = userInputProvider;
         this.messagePrinter = messagePrinter;
         this.playerList = playerList;

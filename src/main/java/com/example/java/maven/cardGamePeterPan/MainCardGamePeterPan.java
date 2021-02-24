@@ -10,7 +10,7 @@ public class MainCardGamePeterPan {
         MessagePrinter messagePrinter = new MessagePrinter();
         UserInputProvider userInputProvider = new UserInputProvider(messagePrinter);
 
-        List<Player> players = new ArrayList<>();
+        ArrayList<Player> players = new ArrayList<>();
         Deck deck = new Deck();
 
         for (int i = 1; i <= numberOfPlayers; i++) {
@@ -25,6 +25,8 @@ public class MainCardGamePeterPan {
 
 
         game.dealCards();
+        game.printPlayers();
+        players.get(0).matchCardBySuit();
         game.printPlayers();
     }
 }
