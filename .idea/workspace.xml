@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cd04b15-abe0-44e1-88e4-e17b1b931993" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Deck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/MainCardGamePeterPan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/MessagePrinter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/UserInputProvider.java" afterDir="false" />
+    <list default="true" id="5cd04b15-abe0-44e1-88e4-e17b1b931993" name="Default Changelist" comment="STEP 0 - create UserInputProvider">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ov8XzVaIcfQ00XDShjsZ3Z32nL" />
@@ -74,30 +71,58 @@
       <option name="presentableId" value="Default" />
       <updated>1614155751012</updated>
     </task>
+    <task id="LOCAL-00001" summary="STEP 0 - create Card class">
+      <created>1614164400475</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164400475</updated>
+    </task>
+    <task id="LOCAL-00002" summary="STEP 0 - create Player class">
+      <created>1614164423915</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164423915</updated>
+    </task>
+    <task id="LOCAL-00003" summary="STEP 0 - create shuffled Deck">
+      <created>1614164461423</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164461423</updated>
+    </task>
+    <task id="LOCAL-00004" summary="STEP 0 - create UserInputProvider">
+      <created>1614164484819</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164484819</updated>
+    </task>
+    <task id="LOCAL-00005" summary="STEP 0 - create MessagePrinter">
+      <created>1614164534627</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164534627</updated>
+    </task>
+    <task id="LOCAL-00006" summary="STEP 0 - app creates players, deals cards, display hands">
+      <created>1614164623770</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1614164623770</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Deck.java</url>
-          <line>34</line>
-          <properties class="com.example.java.maven.cardGamePeterPan.Deck" method="takeCardFromDeck">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Deck.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Game.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="STEP 0 - create Card class" />
+    <MESSAGE value="STEP 0 - create Player class" />
+    <MESSAGE value="STEP 0 - create shuffled Deck" />
+    <MESSAGE value="STEP 0 - create UserInputProvider" />
+    <MESSAGE value="STEP 0 - create MessagePrinter" />
+    <MESSAGE value="STEP 0 - app creates players, deals cards, display hands" />
+    <option name="LAST_COMMIT_MESSAGE" value="STEP 0 - app creates players, deals cards, display hands" />
   </component>
 </project>

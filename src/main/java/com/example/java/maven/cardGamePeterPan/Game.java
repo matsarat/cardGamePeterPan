@@ -20,7 +20,6 @@ public class Game {
     }
 
     public void dealCards() {
-        System.out.println(deck.getCards().size());
         boolean areCards = true;
         while (areCards) {
             for (Player player : playerList) {
