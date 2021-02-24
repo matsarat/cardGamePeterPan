@@ -4,17 +4,68 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cd04b15-abe0-44e1-88e4-e17b1b931993" name="Default Changelist" comment="" />
+    <list default="true" id="5cd04b15-abe0-44e1-88e4-e17b1b931993" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Deck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/MainCardGamePeterPan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/MessagePrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/UserInputProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ov8XzVaIcfQ00XDShjsZ3Z32nL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RunManager">
+    <configuration name="MainCardGamePeterPan" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.java.maven.cardGamePeterPan.MainCardGamePeterPan" />
+      <module name="cardGamePeterPan" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.java.maven.cardGamePeterPan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainCardGamePeterPan" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5cd04b15-abe0-44e1-88e4-e17b1b931993" name="Default Changelist" comment="" />
@@ -24,5 +75,29 @@
       <updated>1614155751012</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Deck.java</url>
+          <line>34</line>
+          <properties class="com.example.java.maven.cardGamePeterPan.Deck" method="takeCardFromDeck">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Deck.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/java/maven/cardGamePeterPan/Game.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
