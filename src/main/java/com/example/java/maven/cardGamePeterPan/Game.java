@@ -80,4 +80,15 @@ public class Game {
             return getValidCardIndex(player);
         }
     }
+
+
+    private Player getPreviousPlayer(Player player) {
+        int indexOfCurrentPlayer = playerList.indexOf(player);
+        if ((indexOfCurrentPlayer - 1) < 0) {
+            return playerList.get(playerList.size() - 1);
+        }
+        else {
+            return playerList.get(indexOfCurrentPlayer-1);
+        }
+    }
 }
