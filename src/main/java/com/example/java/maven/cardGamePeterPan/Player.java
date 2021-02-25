@@ -21,24 +21,28 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player " + name + " " + hand;
+        return name + ", with hand " + hand;
     }
 
     public void addCardToHand(Card card) {
         hand.add(card);
     }
 
-    public void matchCardBySuit() {
-        for (Card card : hand) {
-            int startMatchingFromIndex = hand.indexOf(card);
-            for (int i = startMatchingFromIndex + 1; i < hand.size(); i++) {
-                if (card.getSuit().equals(hand.get(i).getSuit())) {
-                    hand.remove(card);
-                    hand.remove(hand.get(i));
-                }
-            }
-            break;
-        }
+    public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
+        hand.remove(firstCardIndex);
+        hand.remove(secondCardIndex);
+    }
+
+    public boolean areCardsMatchingBySuit(int firstCardIndex, int secondCardIndex) {
+        Card firstCardToCompare = hand.get(firstCardIndex);
+        Card secondCardToCompare = hand.get(secondCardIndex);
+        return firstCardToCompare.getSuit().equals(secondCardToCompare.getSuit());
+    }
+
+    public boolean areCardsMatchingByRank(int firstCardIndex, int secondCardIndex) {
+        Card firstCardToCompare = hand.get(firstCardIndex);
+        Card secondCardToCompare = hand.get(secondCardIndex);
+        return firstCardToCompare.getRank().equals(secondCardToCompare.getRank());
     }
 
     public void takeCardFromPlayersHand(Player player, int numberOfChosenCard) {
