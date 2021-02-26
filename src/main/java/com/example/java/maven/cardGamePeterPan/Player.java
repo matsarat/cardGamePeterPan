@@ -29,8 +29,8 @@ public class Player {
     }
 
     public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
-        hand.remove(firstCardIndex);
         hand.remove(secondCardIndex);
+        hand.remove(firstCardIndex);
     }
 
     public boolean areCardsMatchingBySuit(int firstCardIndex, int secondCardIndex) {
@@ -45,7 +45,22 @@ public class Player {
         return firstCardToCompare.getRank().equals(secondCardToCompare.getRank());
     }
 
-    public void takeCardFromPlayersHand(Player player, int numberOfChosenCard) {
-        hand.add(player.hand.remove(numberOfChosenCard - 1));
+
+    public void takeCardFromAnotherPlayersHand(Player player, int chosenCardIndex) {
+        hand.add(player.hand.remove(chosenCardIndex));
+    }
+
+    public boolean isDiscardingCardsPossible() {
+        for (Card card : hand) {
+            for (int i = (hand.indexOf(card)+1); i < hand.size(); i++) {
+                if (card.getSuit().equals(hand.get(i).getSuit())) {
+                    return true;
+                }
+                else if (card.getRank().equals(hand.get(i).getRank())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
