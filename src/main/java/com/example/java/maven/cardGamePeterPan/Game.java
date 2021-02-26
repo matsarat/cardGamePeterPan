@@ -21,7 +21,8 @@ public class Game {
 
     public Game(UserInputProvider userInputProvider,
                 MessagePrinter messagePrinter,
-                ArrayList<Player> playerList, Deck deck) {
+                ArrayList<Player> playerList,
+                Deck deck) {
         this.userInputProvider = userInputProvider;
         this.messagePrinter = messagePrinter;
         this.playerList = playerList;
@@ -49,6 +50,7 @@ public class Game {
     }
 
     public void choseCardsToDiscard(Player player) {
+        messagePrinter.printPlayer(player);
         messagePrinter.printMessage(ASK_FOR_CARDS_TO_DISCARD);
         int firstCardToDiscardIndex = (getValidCardIndex(player));
         messagePrinter.printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
@@ -81,8 +83,14 @@ public class Game {
         }
     }
 
+    public void getCardFromPreviousPlayerHand(Player player) {
+        Player previousPlayer = getPreviousPlayer(player);
+        messagePrinter.printMessage(String.format("%s has %s cards. Which one would you like to draw?", previousPlayer.getName(), previousPlayer.getHand().size()));
+        player.takeCardFromAnotherPlayersHand(previousPlayer, getValidCardIndex(previousPlayer));
+    }
 
-    private Player getPreviousPlayer(Player player) {
+
+    public Player getPreviousPlayer(Player player) {
         int indexOfCurrentPlayer = playerList.indexOf(player);
         if ((indexOfCurrentPlayer - 1) < 0) {
             return playerList.get(playerList.size() - 1);
