@@ -99,4 +99,14 @@ public class Game {
             return playerList.get(indexOfCurrentPlayer-1);
         }
     }
+
+    public int countActivePlayers() {
+        int activePlayerCounter = 0;
+        for (Player player : playerList) {
+            if (player.isPlaying()) {
+                activePlayerCounter += 1;
+            }
+        }
+        return activePlayerCounter;
+    }
 }
