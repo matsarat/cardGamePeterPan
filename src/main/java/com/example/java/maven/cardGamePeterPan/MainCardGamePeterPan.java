@@ -1,12 +1,12 @@
 package com.example.java.maven.cardGamePeterPan;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainCardGamePeterPan {
 
     public static void main(String[] args) {
-        int numberOfPlayers = 2;
+
+        int numberOfPlayers = 3;
         MessagePrinter messagePrinter = new MessagePrinter();
         UserInputProvider userInputProvider = new UserInputProvider(messagePrinter);
 
@@ -26,7 +26,21 @@ public class MainCardGamePeterPan {
 
         game.dealCards();
         game.printPlayers();
-        players.get(0).matchCardBySuit();
-        game.printPlayers();
+
+
+        int activePlayers = game.countActivePlayers();
+        while (activePlayers > 1) {
+            for (Player player : players) {
+                if (player.isPlaying()) {
+                    messagePrinter.printMessage(String.format("Your turn, %s", player.getName()));
+                    game.getCardFromPreviousPlayerHand(player);
+                    if (player.isDiscardingCardsPossible()) {
+                        game.choseCardsToDiscard(player);
+                    }
+                    player.checkIfWon();
+                    activePlayers = game.countActivePlayers();
+                }
+            }
+        }
     }
 }
