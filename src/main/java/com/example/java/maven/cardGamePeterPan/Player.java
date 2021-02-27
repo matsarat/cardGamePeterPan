@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Player {
     private final String name;
     private final ArrayList<Card>hand;
+    private boolean isPlaying;
 
     public Player(String name) {
         this.name = name;
         this.hand = new ArrayList<>();
+        this.isPlaying = true;
     }
 
     public String getName() {
@@ -62,5 +64,23 @@ public class Player {
             }
         }
         return false;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public boolean checkIfWon() {
+        if (hand.size() == 0) {
+            setPlaying(false);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
