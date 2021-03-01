@@ -30,14 +30,12 @@ public class Game {
     }
 
     public void dealCards() {
-        boolean areCards = true;
-        while (areCards) {
+        while(deck.getCards().size() > 0) {
             for (Player player : playerList) {
                 if (deck.getCards().size() > 0) {
                     player.addCardToHand(deck.takeCardFromDeck());
                 }
                 if (deck.getCards().size() == 0) {
-                    areCards = false;
                 }
             }
         }
