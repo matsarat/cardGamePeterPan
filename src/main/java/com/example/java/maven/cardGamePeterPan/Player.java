@@ -35,19 +35,22 @@ public class Player {
         hand.remove(firstCardIndex);
     }
 
-    public boolean areCardsMatchingBySuit(int firstCardIndex, int secondCardIndex) {
+
+    public boolean areCardsMatching(int firstCardIndex, int secondCardIndex) {
         Card firstCardToCompare = hand.get(firstCardIndex);
         Card secondCardToCompare = hand.get(secondCardIndex);
-        return firstCardToCompare.getSuit().equals(secondCardToCompare.getSuit());
+
+        if (firstCardToCompare.getSuit().equals(secondCardToCompare.getSuit())) {
+            return true;
+        }
+        else if (firstCardToCompare.getRank().equals(secondCardToCompare.getRank())) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
-
-    public boolean areCardsMatchingByRank(int firstCardIndex, int secondCardIndex) {
-        Card firstCardToCompare = hand.get(firstCardIndex);
-        Card secondCardToCompare = hand.get(secondCardIndex);
-        return firstCardToCompare.getRank().equals(secondCardToCompare.getRank());
-    }
-
-
+    
     public void takeCardFromAnotherPlayersHand(Player player, int chosenCardIndex) {
         hand.add(player.hand.remove(chosenCardIndex));
     }
