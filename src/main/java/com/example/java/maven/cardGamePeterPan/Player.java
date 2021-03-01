@@ -1,10 +1,11 @@
 package com.example.java.maven.cardGamePeterPan;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private final String name;
-    private final ArrayList<Card>hand;
+    private final List<Card> hand;
     private boolean isPlaying;
 
     public Player(String name) {
@@ -17,7 +18,7 @@ public class Player {
         return name;
     }
 
-    public ArrayList<Card> getHand() {
+    public List<Card> getHand() {
         return hand;
     }
 
@@ -50,7 +51,7 @@ public class Player {
             return false;
         }
     }
-    
+
     public void takeCardFromAnotherPlayersHand(Player player, int chosenCardIndex) {
         hand.add(player.hand.remove(chosenCardIndex));
     }
