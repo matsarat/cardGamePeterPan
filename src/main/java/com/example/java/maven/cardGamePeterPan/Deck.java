@@ -14,14 +14,11 @@ public class Deck {
 
     public Deck() {
         this.cards = new Stack<>();
-        for (Card.Suit suit : Card.Suit.values()) {
-            if (suit != Card.Suit.WITCH)
-                for (Card.Rank rank : Card.Rank.values()) {
-                    if (rank != Card.Rank.WITCH) {
-                        Card card = new Card(suit, rank);
-                        cards.push(card);
-                    }
-                }
+        for (Card.Suit suit : Card.Suit.getSuitsWithoutWitch()) {
+            for (Card.Rank rank : Card.Rank.getRanksWithoutWitch()) {
+                Card card = new Card(suit, rank);
+                cards.push(card);
+            }
         }
         cards.push(new Card(Card.Suit.WITCH, Card.Rank.WITCH));
         Collections.shuffle(cards);
