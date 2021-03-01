@@ -33,9 +33,7 @@ public class Game {
         while(deck.getCards().size() > 0) {
             for (Player player : playerList) {
                 if (deck.getCards().size() > 0) {
-                    player.addCardToHand(deck.takeCardFromDeck());
-                }
-                if (deck.getCards().size() == 0) {
+                    player.addCardToHand(deck.takeCard());
                 }
             }
         }
@@ -58,10 +56,7 @@ public class Game {
     }
 
     private void discardCardsIfPossible(Player player, int firstCardToDiscardIndex, int secondCardToDiscardIndex) {
-        if (player.areCardsMatchingByRank(firstCardToDiscardIndex, secondCardToDiscardIndex)) {
-            player.discardCardsFromHand(firstCardToDiscardIndex, secondCardToDiscardIndex);
-        }
-        else if (player.areCardsMatchingBySuit(firstCardToDiscardIndex, secondCardToDiscardIndex)) {
+        if (player.areCardsMatching(firstCardToDiscardIndex, secondCardToDiscardIndex)) {
             player.discardCardsFromHand(firstCardToDiscardIndex, secondCardToDiscardIndex);
         }
         else {
