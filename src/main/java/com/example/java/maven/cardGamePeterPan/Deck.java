@@ -32,7 +32,7 @@ public class Deck {
         return "Deck:" + cards;
     }
 
-    public Card takeCardFromDeck() {
+    public Card takeCard() {
         return cards.pop();
     }
 }
