@@ -58,11 +58,9 @@ public class Player {
 
     public boolean isDiscardingCardsPossible() {
         for (Card card : hand) {
-            for (int i = (hand.indexOf(card)+1); i < hand.size(); i++) {
-                if (card.getSuit().equals(hand.get(i).getSuit())) {
-                    return true;
-                }
-                else if (card.getRank().equals(hand.get(i).getRank())) {
+            int currentCardIndex = hand.indexOf(card);
+            for (int i = (currentCardIndex+1); i < hand.size(); i++) {
+                if (areCardsMatching(currentCardIndex, i)) {
                     return true;
                 }
             }
