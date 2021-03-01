@@ -1,5 +1,8 @@
 package com.example.java.maven.cardGamePeterPan;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Card {
     private final Suit suit;
     private final Rank rank;
@@ -36,6 +39,16 @@ public class Card {
         Suit(String symbol) {
             this.symbol = symbol;
         }
+
+        public static List<Suit> getSuitsWithoutWitch() {
+            List<Suit> suitsWithoutWitch = new ArrayList<>();
+            for (Suit suit : Suit.values()) {
+                if (suit != WITCH) {
+                    suitsWithoutWitch.add(suit);
+                }
+            }
+            return suitsWithoutWitch;
+        }
     }
 
     public enum Rank {
@@ -52,6 +65,16 @@ public class Card {
 
         Rank(String rank) {
             this.figure = rank;
+        }
+
+        public static List<Rank> getRanksWithoutWitch() {
+            List<Rank> ranksWithoutWitch = new ArrayList<>();
+            for (Rank rank : Rank.values()) {
+                if (rank != WITCH) {
+                    ranksWithoutWitch.add(rank);
+                }
+            }
+            return ranksWithoutWitch;
         }
     }
 }
