@@ -111,11 +111,14 @@ public class Game {
                 .collect(Collectors.toList());
     }
 
+    public boolean checkIfPlayerIsActive(Player player) {
+        return player.getHandSize() != 0;
+    }
+
     public void play() {
         while (countActivePlayers() > 1) {
             for (Player player : getActivePlayers()) {
-                player.checkIfActive();
-                if (player.isPlaying()) {
+                if (checkIfPlayerIsActive(player)) {
                     messagePrinter.printMessage(String.format("Your turn, %s", player.getName()));
                     getCardFromPreviousPlayerHand(player);
                     if (player.isDiscardingCardsPossible()) {
