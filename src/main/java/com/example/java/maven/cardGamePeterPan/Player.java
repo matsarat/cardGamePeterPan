@@ -18,10 +18,6 @@ public class Player {
         return name;
     }
 
-    public List<Card> getHand() {
-        return hand;
-    }
-
     @Override
     public String toString() {
         return name + ", with hand " + hand;
@@ -29,6 +25,10 @@ public class Player {
 
     public void addCardToHand(Card card) {
         hand.add(card);
+    }
+
+    public int getHandSize() {
+        return hand.size();
     }
 
     public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
@@ -41,15 +41,7 @@ public class Player {
         Card firstCardToCompare = hand.get(firstCardIndex);
         Card secondCardToCompare = hand.get(secondCardIndex);
 
-        if (firstCardToCompare.getSuit().equals(secondCardToCompare.getSuit())) {
-            return true;
-        }
-        else if (firstCardToCompare.getRank().equals(secondCardToCompare.getRank())) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return firstCardToCompare.isMatching(secondCardToCompare);
     }
 
     public void takeCardFromAnotherPlayersHand(Player player, int chosenCardIndex) {
@@ -76,13 +68,9 @@ public class Player {
         return isPlaying;
     }
 
-    public boolean checkIfWon() {
+    public void checkIfActive() {
         if (hand.size() == 0) {
             setPlaying(false);
-            return true;
-        }
-        else {
-            return false;
         }
     }
 }
