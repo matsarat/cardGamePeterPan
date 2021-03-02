@@ -53,10 +53,10 @@ public class Card {
 
     public enum Rank {
 
-        NINE("9"),
-        TEN("10"),
-        JACK("J"),
-        QUEEN("Q"),
+//        NINE("9"),
+//        TEN("10"),
+//        JACK("J"),
+//        QUEEN("Q"),
         KING("K"),
         ACE("A"),
         WITCH("WITCH");
@@ -76,5 +76,9 @@ public class Card {
             }
             return ranksWithoutWitch;
         }
+    }
+
+    public boolean isMatching(Card card) {
+        return this.suit.equals(card.suit) || this.rank.equals(card.rank);
     }
 }
