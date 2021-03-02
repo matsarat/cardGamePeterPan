@@ -1,6 +1,5 @@
 package com.example.java.maven.cardGamePeterPan;
 
-import java.util.Scanner;
 
 public class MessagePrinter {
 
