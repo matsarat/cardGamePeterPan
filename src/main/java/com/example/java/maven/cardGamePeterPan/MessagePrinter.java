@@ -15,11 +15,4 @@ public class MessagePrinter {
     public void printPlayer(Player player) {
         System.out.println(player);
     }
-
-    public void printNumberOfCardsInPlayersHand(Player player) {
-        System.out.println("Player " + player.getName() + " has " + player.getHand().size() + " cards.");
-    }
-
-
-
 }
