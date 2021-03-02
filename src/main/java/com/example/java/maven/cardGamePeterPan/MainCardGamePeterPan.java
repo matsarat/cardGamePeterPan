@@ -6,7 +6,7 @@ public class MainCardGamePeterPan {
 
     public static void main(String[] args) {
 
-        int numberOfPlayers = 3;
+        int numberOfPlayers = 4;
         MessagePrinter messagePrinter = new MessagePrinter();
         UserInputProvider userInputProvider = new UserInputProvider(messagePrinter);
 
@@ -26,21 +26,6 @@ public class MainCardGamePeterPan {
 
         game.dealCards();
         game.printPlayers();
-
-
-        int activePlayers = game.countActivePlayers();
-        while (activePlayers > 1) {
-            for (Player player : players) {
-                if (player.isPlaying()) {
-                    messagePrinter.printMessage(String.format("Your turn, %s", player.getName()));
-                    game.getCardFromPreviousPlayerHand(player);
-                    if (player.isDiscardingCardsPossible()) {
-                        game.choseCardsToDiscard(player);
-                    }
-                    player.checkIfWon();
-                    activePlayers = game.countActivePlayers();
-                }
-            }
-        }
+        game.play();
     }
 }
