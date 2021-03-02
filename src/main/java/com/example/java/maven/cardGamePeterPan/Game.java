@@ -48,41 +48,43 @@ public class Game {
 
     public void choseCardsToDiscard(Player player) {
         messagePrinter.printPlayer(player);
+
         messagePrinter.printMessage(ASK_FOR_CARDS_TO_DISCARD);
-        int firstCardToDiscardIndex = (getValidCardIndex(player));
+        int firstCardToDiscardIndex = userInputProvider.getNumberOfChosenCard();
         messagePrinter.printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
-        int secondCardToDiscardIndex = (getValidCardIndex(player));
+        int secondCardToDiscardIndex = userInputProvider.getNumberOfChosenCard();
 
         discardCardsIfPossible(player, firstCardToDiscardIndex, secondCardToDiscardIndex);
     }
 
     private void discardCardsIfPossible(Player player, int firstCardToDiscardIndex, int secondCardToDiscardIndex) {
-        if (player.areCardsMatching(firstCardToDiscardIndex, secondCardToDiscardIndex)) {
-            player.discardCardsFromHand(firstCardToDiscardIndex, secondCardToDiscardIndex);
-        }
-        else {
-            messagePrinter.printError(WRONG_CARDS_TO_DISCARD);
-            choseCardsToDiscard(player);
-        }
-    }
 
-    public int getValidCardIndex(Player player) {
-        int userInput = userInputProvider.getNumberOfChosenCard();
-        if (userInput > 0 && userInput <= player.getHandSize()) {
-            return (userInput - 1);
+        try {
+            if (player.areCardsMatching(firstCardToDiscardIndex, secondCardToDiscardIndex)) {
+                player.discardCardsFromHand(firstCardToDiscardIndex, secondCardToDiscardIndex);
+            }
+            else {
+                messagePrinter.printError(WRONG_CARDS_TO_DISCARD);
+                choseCardsToDiscard(player);
+            }
         }
-        else {
-            messagePrinter.printError(String.format("Your input must be an integer between 1 and %s", player.getHandSize()));
-            return getValidCardIndex(player);
+        catch (IndexOutOfBoundsException exception) {
+            messagePrinter.printError(exception.getMessage());
+            choseCardsToDiscard(player);
         }
     }
 
     public void getCardFromPreviousPlayerHand(Player player) {
         Player previousPlayer = getPreviousPlayer(player);
         messagePrinter.printMessage(String.format("%s has %s cards. Which one would you like to draw?", previousPlayer.getName(), previousPlayer.getHandSize()));
-        player.takeCardFromAnotherPlayersHand(previousPlayer, getValidCardIndex(previousPlayer));
+        try {
+            player.takeCardFromAnotherPlayersHand(previousPlayer, userInputProvider.getNumberOfChosenCard());
+        }
+        catch (IndexOutOfBoundsException exception) {
+            messagePrinter.printError(exception.getMessage());
+            getCardFromPreviousPlayerHand(player);
+        }
     }
-
 
     public Player getPreviousPlayer(Player player) {
         List<Player> activePlayers = getActivePlayers();
