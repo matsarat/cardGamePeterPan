@@ -29,21 +29,32 @@ public class Player {
         return hand.size();
     }
 
+//    TODO what if player is a monkey?
     public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
+        validateCardIndex(firstCardIndex);
+        validateCardIndex(secondCardIndex);
         hand.remove(secondCardIndex);
         hand.remove(firstCardIndex);
     }
 
 
     public boolean areCardsMatching(int firstCardIndex, int secondCardIndex) {
+        validateCardIndex(firstCardIndex);
+        validateCardIndex(secondCardIndex);
         Card firstCardToCompare = hand.get(firstCardIndex);
         Card secondCardToCompare = hand.get(secondCardIndex);
-
         return firstCardToCompare.isMatching(secondCardToCompare);
     }
 
-    public void takeCardFromAnotherPlayersHand(Player player, int chosenCardIndex) {
-        hand.add(player.hand.remove(chosenCardIndex));
+    public void takeCardFromAnotherPlayersHand(Player player, int userInput) {
+        player.validateCardIndex(userInput);
+        hand.add(player.hand.remove(userInput));
+    }
+
+    private void validateCardIndex(int userInput) {
+        if (userInput < 0 || userInput >= hand.size()) {
+            throw new IndexOutOfBoundsException(String.format("Your input must be an integer between 0 and %s", hand.size()-1));
+        }
     }
 
     public boolean isDiscardingCardsPossible() {
