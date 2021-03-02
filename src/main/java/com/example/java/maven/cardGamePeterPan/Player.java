@@ -6,12 +6,10 @@ import java.util.List;
 public class Player {
     private final String name;
     private final List<Card> hand;
-    private boolean isPlaying;
 
     public Player(String name) {
         this.name = name;
         this.hand = new ArrayList<>();
-        this.isPlaying = true;
     }
 
     public String getName() {
@@ -58,19 +56,5 @@ public class Player {
             }
         }
         return false;
-    }
-
-    public void setPlaying(boolean playing) {
-        isPlaying = playing;
-    }
-
-    public boolean isPlaying() {
-        return isPlaying;
-    }
-
-    public void checkIfActive() {
-        if (hand.size() == 0) {
-            setPlaying(false);
-        }
     }
 }
