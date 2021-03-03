@@ -93,29 +93,31 @@ public class Game {
         }
     }
 
-    public int countActivePlayers() {
+    public int numberOfActivePlayers() {
         return getActivePlayers().size();
     }
 
     public List<Player> getActivePlayers(){
         return playerList.stream()
-                .filter(player -> player.getHandSize() > 0)
+                .filter(this::playerIsActive)
                 .collect(Collectors.toList());
     }
 
-    public boolean checkIfPlayerIsActive(Player player) {
+    public boolean playerIsActive(Player player) {
         return player.getHandSize() != 0;
     }
 
     public void play() {
-        while (countActivePlayers() > 1) {
+        while (numberOfActivePlayers() > 1) {
             for (Player player : getActivePlayers()) {
-                if (checkIfPlayerIsActive(player)) {
-                    messagePrinter.printMessage(String.format("Your turn, %s", player.getName()));
-                    getCardFromPreviousPlayerHand(player);
-                    if (player.isDiscardingCardsPossible()) {
-                        discardCards(player);
-                    }
+                messagePrinter.printMessage(String.format("Your turn, %s", player.getName()));
+                getCardFromPreviousPlayerHand(player);
+                if (player.isDiscardingCardsPossible()) {
+                    discardCards(player);
+                }
+                if (numberOfActivePlayers() == 1) {
+                    messagePrinter.printMessage(String.format("%s, you lost!", getActivePlayers().get(0).getName()));
+                    break;
                 }
             }
         }
