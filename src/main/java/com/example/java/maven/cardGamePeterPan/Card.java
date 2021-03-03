@@ -13,14 +13,6 @@ public class Card {
         this.rank = rank;
     }
 
-    public Suit getSuit() {
-        return suit;
-    }
-
-    public Rank getRank() {
-        return rank;
-    }
-
     @Override
     public String toString() {
         return suit.symbol + rank.figure;
@@ -53,10 +45,10 @@ public class Card {
 
     public enum Rank {
 
-//        NINE("9"),
-//        TEN("10"),
-//        JACK("J"),
-//        QUEEN("Q"),
+        NINE("9"),
+        TEN("10"),
+        JACK("J"),
+        QUEEN("Q"),
         KING("K"),
         ACE("A"),
         WITCH("WITCH");
