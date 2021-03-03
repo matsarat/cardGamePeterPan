@@ -11,7 +11,7 @@ public class Game {
 
     private final static String ASK_FOR_CARDS_TO_DISCARD= """
             Which cards would you like to discard? 
-            Insert number telling which chosen card is, counting from left:""";
+            Insert number telling which chosen card is, counting from zero:""";
     private final static String ASK_FOR_NEXT_CARD_TO_DISCARD = "Which else?";
     private final static String WRONG_CARDS_TO_DISCARD = """
             "You can't do that! 
