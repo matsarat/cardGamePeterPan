@@ -51,7 +51,7 @@ public class Game {
         return userInputProvider.getNumberOfChosenCard();
     }
 
-    public void choseCardsToDiscard(Player player) {
+    public void discardCards(Player player) {
         messagePrinter.printPlayer(player);
 
         int firstCardToDiscardIndex = getCardIndex(ASK_FOR_CARDS_TO_DISCARD);
@@ -62,11 +62,11 @@ public class Game {
                 player.discardCardsFromHand(firstCardToDiscardIndex, secondCardToDiscardIndex);
             } else {
                 messagePrinter.printError(WRONG_CARDS_TO_DISCARD);
-                choseCardsToDiscard(player);
+                discardCards(player);
             }
         } catch (IndexOutOfBoundsException exception) {
             messagePrinter.printError(exception.getMessage());
-            choseCardsToDiscard(player);
+            discardCards(player);
         }
     }
 
@@ -114,7 +114,7 @@ public class Game {
                     messagePrinter.printMessage(String.format("Your turn, %s", player.getName()));
                     getCardFromPreviousPlayerHand(player);
                     if (player.isDiscardingCardsPossible()) {
-                        choseCardsToDiscard(player);
+                        discardCards(player);
                     }
                 }
             }
