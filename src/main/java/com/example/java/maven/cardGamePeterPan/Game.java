@@ -57,21 +57,14 @@ public class Game {
         int firstCardToDiscardIndex = getCardIndex(ASK_FOR_CARDS_TO_DISCARD);
         int secondCardToDiscardIndex = getCardIndex(ASK_FOR_NEXT_CARD_TO_DISCARD);
 
-        discardCardsIfPossible(player, firstCardToDiscardIndex, secondCardToDiscardIndex);
-    }
-
-    private void discardCardsIfPossible(Player player, int firstCardToDiscardIndex, int secondCardToDiscardIndex) {
-
         try {
             if (player.areCardsMatching(firstCardToDiscardIndex, secondCardToDiscardIndex)) {
                 player.discardCardsFromHand(firstCardToDiscardIndex, secondCardToDiscardIndex);
-            }
-            else {
+            } else {
                 messagePrinter.printError(WRONG_CARDS_TO_DISCARD);
                 choseCardsToDiscard(player);
             }
-        }
-        catch (IndexOutOfBoundsException exception) {
+        } catch (IndexOutOfBoundsException exception) {
             messagePrinter.printError(exception.getMessage());
             choseCardsToDiscard(player);
         }
