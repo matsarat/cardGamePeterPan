@@ -29,12 +29,11 @@ public class Player {
         return hand.size();
     }
 
-//    TODO what if player is a monkey?
     public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
         validateCardIndex(firstCardIndex);
         validateCardIndex(secondCardIndex);
-        hand.remove(secondCardIndex);
-        hand.remove(firstCardIndex);
+        hand.remove(Math.max(firstCardIndex, secondCardIndex));
+        hand.remove(Math.min(firstCardIndex, secondCardIndex));
     }
 
 
