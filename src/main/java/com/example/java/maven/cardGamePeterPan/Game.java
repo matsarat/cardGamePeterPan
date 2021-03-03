@@ -46,13 +46,16 @@ public class Game {
         }
     }
 
+    private int getCardIndex(String message){
+        messagePrinter.printMessage(message);
+        return userInputProvider.getNumberOfChosenCard();
+    }
+
     public void choseCardsToDiscard(Player player) {
         messagePrinter.printPlayer(player);
 
-        messagePrinter.printMessage(ASK_FOR_CARDS_TO_DISCARD);
-        int firstCardToDiscardIndex = userInputProvider.getNumberOfChosenCard();
-        messagePrinter.printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
-        int secondCardToDiscardIndex = userInputProvider.getNumberOfChosenCard();
+        int firstCardToDiscardIndex = getCardIndex(ASK_FOR_CARDS_TO_DISCARD);
+        int secondCardToDiscardIndex = getCardIndex(ASK_FOR_NEXT_CARD_TO_DISCARD);
 
         discardCardsIfPossible(player, firstCardToDiscardIndex, secondCardToDiscardIndex);
     }
@@ -98,13 +101,7 @@ public class Game {
     }
 
     public int countActivePlayers() {
-        int activePlayerCounter = 0;
-        for (Player player : playerList) {
-            if (player.getHandSize() > 0) {
-                activePlayerCounter += 1;
-            }
-        }
-        return activePlayerCounter;
+        return getActivePlayers().size();
     }
 
     public List<Player> getActivePlayers(){
