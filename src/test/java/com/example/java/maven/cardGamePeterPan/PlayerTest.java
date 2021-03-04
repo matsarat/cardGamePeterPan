@@ -110,4 +110,25 @@ public class PlayerTest {
         assertThrows(IndexOutOfBoundsException.class, () -> player.areCardsMatching(0, 4));
         assertThrows(IllegalArgumentException.class, () -> player.areCardsMatching(0, 0));
     }
+
+    @Test
+    void shouldDiscardTwoChosenCards() {
+
+//        given
+        Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
+        Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
+        Card card3 = new Card(Card.Suit.HEART, Card.Rank.ACE);
+
+//        when
+        player.addCardToHand(card1);
+        player.addCardToHand(card2);
+        player.addCardToHand(card3);
+
+        player.discardCardsFromHand(0, 1);
+
+//        then
+        assertThat(player.getHandSize()).isEqualTo(1);
+        assertThat(player.getHand().get(0)).isEqualTo(card3);
+        assertThrows(IndexOutOfBoundsException.class, () -> player.discardCardsFromHand(0, 1));
+    }
 }
