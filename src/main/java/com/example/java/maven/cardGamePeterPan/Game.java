@@ -82,7 +82,7 @@ public class Game {
         }
     }
 
-    public Player getPreviousPlayer(Player player) {
+    private Player getPreviousPlayer(Player player) {
         List<Player> activePlayers = getActivePlayers();
         int indexOfCurrentPlayer = activePlayers.indexOf(player);
         if ((indexOfCurrentPlayer - 1) < 0) {
