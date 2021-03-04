@@ -3,10 +3,15 @@ package com.example.java.maven.cardGamePeterPan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 
 public class GameTest {
     private final static String ASK_FOR_CARDS_TO_DISCARD = """
@@ -41,5 +46,56 @@ public class GameTest {
         assertThat(deck.getCards().size()).isEqualTo(0);
     }
 
+    @Test
+    void shouldPrintPlayers() {
 
+//        when
+        game.printPlayers();
+
+//        then
+
+        then(messagePrinter)
+                .should(times(1))
+                .printPlayer(playerList.get(0));
+        then(messagePrinter)
+                .should(times(1))
+                .printPlayer(playerList.get(1));
+        then(messagePrinter)
+                .should(times(1))
+                .printPlayer(playerList.get(2));
+    }
+
+    @Test
+    void shouldDiscardCards() {
+        Player player = playerList.get(0);
+        Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
+        Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
+        Card card3 = new Card(Card.Suit.SPADE, Card.Rank.TEN);
+        player.addCardToHand(card1);
+        player.addCardToHand(card2);
+        player.addCardToHand(card3);
+
+//        given
+        given(userInputProvider.getNumberOfChosenCard())
+                .willReturn(0).willReturn(1);
+
+//        when
+        game.discardCards(player);
+
+//        then
+        then(messagePrinter)
+                .should(times(1))
+                .printPlayer(player);
+        then(messagePrinter)
+                .should(times(1))
+                .printMessage(ASK_FOR_CARDS_TO_DISCARD);
+        then(messagePrinter)
+                .should(times(1))
+                .printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
+        
+
+        assertThat(player.getHandSize()).isEqualTo(1);
+        assertThat(player.getHand().get(0)).isEqualTo(card3);
+
+    }
 }
