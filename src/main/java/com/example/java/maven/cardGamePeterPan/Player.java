@@ -16,6 +16,10 @@ public class Player {
         return name;
     }
 
+    public List<Card> getHand() {
+        return new ArrayList<>(hand);
+    }
+
     @Override
     public String toString() {
         return name + ", with hand " + hand;
