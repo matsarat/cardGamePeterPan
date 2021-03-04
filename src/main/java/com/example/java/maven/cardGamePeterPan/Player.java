@@ -30,29 +30,36 @@ public class Player {
     }
 
     public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
-        validateCardIndex(firstCardIndex);
-        validateCardIndex(secondCardIndex);
+        validateIfCardIndexIsInBounds(firstCardIndex);
+        validateIfCardIndexIsInBounds(secondCardIndex);
         hand.remove(Math.max(firstCardIndex, secondCardIndex));
         hand.remove(Math.min(firstCardIndex, secondCardIndex));
     }
 
 
     public boolean areCardsMatching(int firstCardIndex, int secondCardIndex) {
-        validateCardIndex(firstCardIndex);
-        validateCardIndex(secondCardIndex);
+        validateIfCardIndexIsInBounds(firstCardIndex);
+        validateIfCardIndexIsInBounds(secondCardIndex);
+        validateIfCardIndexesAreDifferent(firstCardIndex, secondCardIndex);
         Card firstCardToCompare = hand.get(firstCardIndex);
         Card secondCardToCompare = hand.get(secondCardIndex);
         return firstCardToCompare.isMatching(secondCardToCompare);
     }
 
     public void takeCardFromAnotherPlayersHand(Player player, int userInput) {
-        player.validateCardIndex(userInput);
+        player.validateIfCardIndexIsInBounds(userInput);
         hand.add(player.hand.remove(userInput));
     }
 
-    private void validateCardIndex(int userInput) {
+    private void validateIfCardIndexIsInBounds(int userInput) {
         if (userInput < 0 || userInput >= hand.size()) {
             throw new IndexOutOfBoundsException(String.format("Your input must be an integer between 0 and %s", hand.size()-1));
+        }
+    }
+
+    private void validateIfCardIndexesAreDifferent(int firstCardIndex, int secondCardIndex) {
+        if (firstCardIndex == secondCardIndex) {
+            throw new IllegalArgumentException("You need to choose two different cards!");
         }
     }
 

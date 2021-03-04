@@ -64,7 +64,7 @@ public class Game {
                 messagePrinter.printError(WRONG_CARDS_TO_DISCARD);
                 discardCards(player);
             }
-        } catch (IndexOutOfBoundsException exception) {
+        } catch (IndexOutOfBoundsException | IllegalArgumentException exception) {
             messagePrinter.printError(exception.getMessage());
             discardCards(player);
         }
