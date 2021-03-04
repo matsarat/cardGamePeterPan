@@ -67,6 +67,8 @@ public class GameTest {
 
     @Test
     void shouldDiscardCards() {
+
+//        given
         Player player = playerList.get(0);
         Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
         Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
@@ -75,7 +77,6 @@ public class GameTest {
         player.addCardToHand(card2);
         player.addCardToHand(card3);
 
-//        given
         given(userInputProvider.getNumberOfChosenCard())
                 .willReturn(0).willReturn(1);
 
@@ -92,10 +93,36 @@ public class GameTest {
         then(messagePrinter)
                 .should(times(1))
                 .printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
-        
+
 
         assertThat(player.getHandSize()).isEqualTo(1);
         assertThat(player.getHand().get(0)).isEqualTo(card3);
 
+    }
+
+    @Test
+    void shouldTakeChosenCardFromPreviousPlayerHand() {
+//        given
+
+        Player player = playerList.get(0);
+
+        Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
+        Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
+        Card card3 = new Card(Card.Suit.SPADE, Card.Rank.TEN);
+        playerList.get(1).addCardToHand(card1);// to make sure that all players are active and code gets real previous, not only available player
+        playerList.get(2).addCardToHand(card2);
+        playerList.get(2).addCardToHand(card3);
+
+        given(userInputProvider.getNumberOfChosenCard())
+                .willReturn(1);
+
+//        when
+        game.getCardFromPreviousPlayerHand(player);
+
+//        then
+
+        assertThat(player.getHandSize()).isEqualTo(1);
+        assertThat(player.getHand().get(0)).isEqualTo(card3);
+        assertThat(playerList.get(2).getHandSize()).isEqualTo(1);
     }
 }
