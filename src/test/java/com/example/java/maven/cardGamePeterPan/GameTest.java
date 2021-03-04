@@ -137,5 +137,29 @@ public class GameTest {
         assertThat(game.getActivePlayers().size()).isEqualTo(3);
     }
 
-    
+    @Test
+    void shouldReturnTrueIfPlayerHasCardsOnHand() {
+        Player player = Mockito.mock(Player.class);
+
+//        given
+        given(player.getHandSize())
+                .willReturn(1);
+
+//        then
+        assertThat(game.playerIsActive(player))
+                .isTrue();
+    }
+
+    @Test
+    void shouldReturnFalseIfPlayerHasCardsOnHand() {
+        Player player = Mockito.mock(Player.class);
+
+//        given
+        given(player.getHandSize())
+                .willReturn(0);
+
+//        then
+        assertThat(game.playerIsActive(player))
+                .isFalse();
+    }
 }
