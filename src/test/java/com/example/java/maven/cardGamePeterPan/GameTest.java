@@ -102,6 +102,7 @@ public class GameTest {
 
     @Test
     void shouldTakeChosenCardFromPreviousPlayerHand() {
+
 //        given
 
         Player player = playerList.get(0);
@@ -125,4 +126,16 @@ public class GameTest {
         assertThat(player.getHand().get(0)).isEqualTo(card3);
         assertThat(playerList.get(2).getHandSize()).isEqualTo(1);
     }
+
+    @Test
+    void shouldReturnListOfActivePlayers() {
+
+//        given
+        game.dealCards();
+
+//        then
+        assertThat(game.getActivePlayers().size()).isEqualTo(3);
+    }
+
+    
 }
