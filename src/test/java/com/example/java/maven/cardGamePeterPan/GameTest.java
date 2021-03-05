@@ -3,14 +3,12 @@ package com.example.java.maven.cardGamePeterPan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.times;
 
 public class GameTest {
@@ -110,7 +108,7 @@ public class GameTest {
         Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
         Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
         Card card3 = new Card(Card.Suit.SPADE, Card.Rank.TEN);
-        playerList.get(1).addCardToHand(card1);// to make sure that all players are active and code gets real previous, not only available player
+        playerList.get(1).addCardToHand(card1);// to make sure that all players are active and code gets real previous, not the only one available player
         playerList.get(2).addCardToHand(card2);
         playerList.get(2).addCardToHand(card3);
 
@@ -177,7 +175,5 @@ public class GameTest {
         then(messagePrinter)
                 .should(times(1))
                 .printMessage("Janusz, you lost!");
-
-
     }
 }
