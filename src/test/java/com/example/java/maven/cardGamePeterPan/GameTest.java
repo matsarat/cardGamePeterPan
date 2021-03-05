@@ -151,7 +151,7 @@ public class GameTest {
     }
 
     @Test
-    void shouldReturnFalseIfPlayerHasCardsOnHand() {
+    void shouldReturnFalseIfPlayerHasNoCardsOnHand() {
         Player player = Mockito.mock(Player.class);
 
 //        given
@@ -161,5 +161,23 @@ public class GameTest {
 //        then
         assertThat(game.playerIsActive(player))
                 .isFalse();
+    }
+
+    @Test
+    void shouldPrintPlayerAsLoserIfIsOnlyActive() {
+//        given
+        Player player = playerList.get(0);
+        Card card = Mockito.mock(Card.class);
+        player.addCardToHand(card); // to make first player on list (Janusz) active
+
+//        when
+        game.play();
+
+//        then
+        then(messagePrinter)
+                .should(times(1))
+                .printMessage("Janusz, you lost!");
+
+
     }
 }
