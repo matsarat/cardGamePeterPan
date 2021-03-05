@@ -3,6 +3,7 @@ package com.example.java.maven.cardGamePeterPan;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeckTest {
@@ -17,7 +18,7 @@ public class DeckTest {
     void deckShouldIncludeRequiredNumberOfCards() {
 
 //        then
-        assertThat(deck.getCards().size()).isEqualTo(25); // because we have 24 card in small deck + Witch
+        assertThat(deck.getCards().size()).isEqualTo(25); // because we have 24 card in small deck (from 9 to Ace) + Witch
     }
 
     @Test
