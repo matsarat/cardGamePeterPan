@@ -68,8 +68,8 @@ public class PlayerTest {
 //        then
         assertThat(player.isDiscardingCardsPossible()).isTrue();
         assertThat(player.getHandSize()).isEqualTo(3);
-
     }
+
 
     @Test
     void shouldReturnTrueIfDiscardingByRankIsPossible() {
@@ -86,6 +86,24 @@ public class PlayerTest {
 
 //        then
         assertThat(player.isDiscardingCardsPossible()).isTrue();
+        assertThat(player.getHandSize()).isEqualTo(3);
+    }
+
+    @Test
+    void shouldReturnFalseIfDiscardingCardsIsImpossible() {
+
+//        given
+        Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
+        Card card2 = new Card(Card.Suit.SPADE, Card.Rank.JACK);
+        Card card3 = new Card(Card.Suit.HEART, Card.Rank.TEN);
+
+//        when
+        player.addCardToHand(card1);
+        player.addCardToHand(card2);
+        player.addCardToHand(card3);
+
+//        then
+        assertThat(player.isDiscardingCardsPossible()).isFalse();
         assertThat(player.getHandSize()).isEqualTo(3);
     }
 
