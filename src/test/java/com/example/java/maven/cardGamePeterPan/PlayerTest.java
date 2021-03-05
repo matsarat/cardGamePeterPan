@@ -129,6 +129,7 @@ public class PlayerTest {
 //        then
         assertThat(player.getHandSize()).isEqualTo(1);
         assertThat(player.getHand().get(0)).isEqualTo(card3);
+        assertThrows(IllegalArgumentException.class, () -> player.discardCardsFromHand(0, 0));
         assertThrows(IndexOutOfBoundsException.class, () -> player.discardCardsFromHand(0, 1));
     }
 }
