@@ -136,6 +136,16 @@ public class GameTest {
     }
 
     @Test
+    void shouldReturnNumberOfActivePlayers() {
+
+//        given
+        game.dealCards();
+
+//        then
+        assertThat(game.numberOfActivePlayers()).isEqualTo(3);
+    }
+
+    @Test
     void shouldReturnTrueIfPlayerHasCardsOnHand() {
         Player player = Mockito.mock(Player.class);
 
