@@ -116,10 +116,11 @@ public class Game {
                     discardCards(player);
                 }
                 if (numberOfActivePlayers() == 1) {
-                    messagePrinter.printMessage(String.format("%s, you lost!", getActivePlayers().get(0).getName()));
                     break;
                 }
             }
         }
+        messagePrinter.printMessage(String.format("%s, you lost!", getActivePlayers().get(0).getName()));
+
     }
 }
