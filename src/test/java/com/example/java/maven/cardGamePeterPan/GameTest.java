@@ -51,7 +51,6 @@ public class GameTest {
         game.printPlayers();
 
 //        then
-
         then(messagePrinter)
                 .should(times(1))
                 .printPlayer(playerList.get(0));
@@ -76,6 +75,8 @@ public class GameTest {
         player.addCardToHand(card3);
 
         given(userInputProvider.getNumberOfChosenCard())
+                .willReturn(0).willReturn(0)
+                .willReturn(0).willReturn(3)
                 .willReturn(0).willReturn(1);
 
 //        when
@@ -84,18 +85,26 @@ public class GameTest {
 //        then
         then(messagePrinter)
                 .should(times(1))
+                .printError("You need to choose two different cards!"); //Checks if IllegalArgumentException gets caught
+
+        then(messagePrinter)
+                .should(times(1))
+                .printError("Your input must be an integer between 0 and 2"); ////Checks if IndexOutOfBounds gets caught
+
+
+        then(messagePrinter)
+                .should(times(3))
                 .printPlayer(player);
         then(messagePrinter)
-                .should(times(1))
+                .should(times(3))
                 .printMessage(ASK_FOR_CARDS_TO_DISCARD);
         then(messagePrinter)
-                .should(times(1))
+                .should(times(3))
                 .printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
 
 
         assertThat(player.getHandSize()).isEqualTo(1);
         assertThat(player.getHand().get(0)).isEqualTo(card3);
-
     }
 
     @Test
