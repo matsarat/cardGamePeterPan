@@ -75,6 +75,7 @@ public class GameTest {
         player.addCardToHand(card3);
 
         given(userInputProvider.getNumberOfChosenCard())
+                .willReturn(0).willReturn(2)
                 .willReturn(0).willReturn(0)
                 .willReturn(0).willReturn(3)
                 .willReturn(0).willReturn(1);
@@ -85,6 +86,10 @@ public class GameTest {
 //        then
         then(messagePrinter)
                 .should(times(1))
+                .printError(WRONG_CARDS_TO_DISCARD);
+
+        then(messagePrinter)
+                .should(times(1))
                 .printError("You need to choose two different cards!"); //Checks if IllegalArgumentException gets caught
 
         then(messagePrinter)
@@ -93,13 +98,13 @@ public class GameTest {
 
 
         then(messagePrinter)
-                .should(times(3))
+                .should(times(4))
                 .printPlayer(player);
         then(messagePrinter)
-                .should(times(3))
+                .should(times(4))
                 .printMessage(ASK_FOR_CARDS_TO_DISCARD);
         then(messagePrinter)
-                .should(times(3))
+                .should(times(4))
                 .printMessage(ASK_FOR_NEXT_CARD_TO_DISCARD);
 
 
@@ -199,5 +204,35 @@ public class GameTest {
         then(messagePrinter)
                 .should(times(1))
                 .printMessage("Janusz, you lost!");
+    }
+
+    @Test
+    void shouldSimulateGameWithLastTwoPlayers() {
+
+//        given
+        Card card1 = new Card(Card.Suit.CLUB, Card.Rank.ACE);
+        Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
+        Card card3 = new Card(Card.Suit.SPADE, Card.Rank.TEN);
+        playerList.get(0).addCardToHand(card1);
+        playerList.get(1).addCardToHand(card2);
+        playerList.get(1).addCardToHand(card3);
+
+
+        given(userInputProvider.getNumberOfChosenCard())
+                .willReturn(0)
+                .willReturn(0)
+                .willReturn(1);
+
+//        when
+        game.play();
+
+//        then
+        then(messagePrinter)
+                .should(times(1))
+                .printMessage("Your turn, Janusz");
+
+        then(messagePrinter)
+                .should(times(1))
+                .printMessage("Grażyna, you lost!");
     }
 }
