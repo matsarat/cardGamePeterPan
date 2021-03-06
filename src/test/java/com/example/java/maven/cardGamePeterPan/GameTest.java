@@ -122,12 +122,17 @@ public class GameTest {
         playerList.get(2).addCardToHand(card3);
 
         given(userInputProvider.getNumberOfChosenCard())
+                .willReturn(2)
                 .willReturn(1);
 
 //        when
         game.getCardFromPreviousPlayerHand(player);
 
 //        then
+        then(messagePrinter)
+                .should(times(1))
+                .printError("Your input must be an integer between 0 and 1"); ////Checks if IndexOutOfBounds gets caught
+
 
         assertThat(player.getHandSize()).isEqualTo(1);
         assertThat(player.getHand().get(0)).isEqualTo(card3);
