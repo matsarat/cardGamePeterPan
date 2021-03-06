@@ -27,6 +27,7 @@ public class PlayerTest {
 
 //        then
         assertThat(player.getHandSize()).isEqualTo(1);
+        assertThat(player.getHand()).contains(card);
     }
 
     @Test
@@ -38,18 +39,13 @@ public class PlayerTest {
         anotherPlayer.addCardToHand(card);
         int cardIndexOutOfBounds = 1;
 
-
 //        when
-
         player.takeCardFromAnotherPlayersHand(anotherPlayer, 0);
 
 //        then
-
         assertThat(player.getHandSize()).isEqualTo(1);
         assertThat(anotherPlayer.getHandSize()).isEqualTo(0);
         assertThrows(IndexOutOfBoundsException.class, () -> player.takeCardFromAnotherPlayersHand(anotherPlayer, cardIndexOutOfBounds));
-
-
     }
 
     @Test
@@ -60,7 +56,6 @@ public class PlayerTest {
         Card card2 = new Card(Card.Suit.SPADE, Card.Rank.JACK);
         Card card3 = new Card(Card.Suit.CLUB, Card.Rank.TEN);
 
-//        when
         player.addCardToHand(card1);
         player.addCardToHand(card2);
         player.addCardToHand(card3);
@@ -79,7 +74,6 @@ public class PlayerTest {
         Card card2 = new Card(Card.Suit.SPADE, Card.Rank.JACK);
         Card card3 = new Card(Card.Suit.HEART, Card.Rank.ACE);
 
-//        when
         player.addCardToHand(card1);
         player.addCardToHand(card2);
         player.addCardToHand(card3);
@@ -97,7 +91,6 @@ public class PlayerTest {
         Card card2 = new Card(Card.Suit.SPADE, Card.Rank.JACK);
         Card card3 = new Card(Card.Suit.HEART, Card.Rank.TEN);
 
-//        when
         player.addCardToHand(card1);
         player.addCardToHand(card2);
         player.addCardToHand(card3);
@@ -115,8 +108,6 @@ public class PlayerTest {
         Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
         Card card3 = new Card(Card.Suit.HEART, Card.Rank.ACE);
 
-
-//        when
         player.addCardToHand(card1);
         player.addCardToHand(card2);
         player.addCardToHand(card3);
@@ -137,11 +128,11 @@ public class PlayerTest {
         Card card2 = new Card(Card.Suit.CLUB, Card.Rank.JACK);
         Card card3 = new Card(Card.Suit.HEART, Card.Rank.ACE);
 
-//        when
         player.addCardToHand(card1);
         player.addCardToHand(card2);
         player.addCardToHand(card3);
 
+//        when
         player.discardCardsFromHand(0, 1);
 
 //        then
