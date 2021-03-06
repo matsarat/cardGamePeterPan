@@ -19,6 +19,7 @@ public class DeckTest {
 
 //        then
         assertThat(deck.getCards().size()).isEqualTo(25); // because we have 24 card in small deck (from 9 to Ace) + Witch
+        assertThat(deck.toString()).contains("WITCH");
     }
 
     @Test
