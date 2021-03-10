@@ -16,6 +16,10 @@ public class Player {
         return name;
     }
 
+    public List<Card> getHand() {
+        return new ArrayList<>(hand);
+    }
+
     @Override
     public String toString() {
         return name + ", with hand " + hand;
@@ -32,6 +36,7 @@ public class Player {
     public void discardCardsFromHand(int firstCardIndex, int secondCardIndex) {
         validateIfCardIndexIsInBounds(firstCardIndex);
         validateIfCardIndexIsInBounds(secondCardIndex);
+        validateIfCardIndexesAreDifferent(firstCardIndex, secondCardIndex);
         hand.remove(Math.max(firstCardIndex, secondCardIndex));
         hand.remove(Math.min(firstCardIndex, secondCardIndex));
     }

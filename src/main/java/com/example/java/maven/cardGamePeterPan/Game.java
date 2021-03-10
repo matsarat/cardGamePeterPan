@@ -82,7 +82,7 @@ public class Game {
         }
     }
 
-    public Player getPreviousPlayer(Player player) {
+    private Player getPreviousPlayer(Player player) {
         List<Player> activePlayers = getActivePlayers();
         int indexOfCurrentPlayer = activePlayers.indexOf(player);
         if ((indexOfCurrentPlayer - 1) < 0) {
@@ -116,10 +116,11 @@ public class Game {
                     discardCards(player);
                 }
                 if (numberOfActivePlayers() == 1) {
-                    messagePrinter.printMessage(String.format("%s, you lost!", getActivePlayers().get(0).getName()));
                     break;
                 }
             }
         }
+        messagePrinter.printMessage(String.format("%s, you lost!", getActivePlayers().get(0).getName()));
+
     }
 }
